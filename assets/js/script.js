@@ -7,7 +7,83 @@ $("#search").click(function () {
         displayCocktail(cocktail)
     };
 });
+let featuredCocktail=function(){
+    let apiUrlCocktail = "https://thecocktaildb.com/api/json/v1/1/random.php";
+    fetch(apiUrlCocktail)
+        .then(function (response) {
+            return response.json()
+        })
+        .then(function (response) {
+            console.log(response.drinks[0])
+            let featuredCocktail=$("<h2>");
+            let cocktailNameEl = $("<h3>");
+            let ingredientTitle = $("<h4>");
+            let ingredientList = $("<ul>");
+            let instructionsTitle = $("<h4>");
+            let instructionsEl = $("<p>");
+            let cocktailName = response.drinks[0].strDrink;
+            let cocktailImg = $("<img>");
+            cocktailImg.attr("src", response.drinks[0].strDrinkThumb + "/preview")
+            let ingredient1 = response.drinks[0].strIngredient1;
+            let ingredient2 = response.drinks[0].strIngredient2;
+            let ingredient3 = response.drinks[0].strIngredient3;
+            let ingredient4 = response.drinks[0].strIngredient4;
+            let ingredient5 = response.drinks[0].strIngredient5;
+            let ingredient6 = response.drinks[0].strIngredient6;
+            let ingredient7 = response.drinks[0].strIngredient7;
+            let ingredient8 = response.drinks[0].strIngredient8;
+            let ingredient9 = response.drinks[0].strIngredient9;
+            let ingredient10 = response.drinks[0].strIngredient10;
+            let ingredient11 = response.drinks[0].strIngredient11;
+            let ingredient12 = response.drinks[0].strIngredient12;
+            let ingredient13 = response.drinks[0].strIngredient13;
+            let ingredient14 = response.drinks[0].strIngredient14;
+            let ingredient15 = response.drinks[0].strIngredient15;
+            let ingredientObj = [ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, ingredient6, ingredient7, ingredient8, ingredient9, ingredient10, ingredient11, ingredient12, ingredient13, ingredient14, ingredient15];
+            let measure1 = response.drinks[0].strMeasure1;
+            let measure2 = response.drinks[0].strMeasure2;
+            let measure3 = response.drinks[0].strMeasure3;
+            let measure4 = response.drinks[0].strMeasure4;
+            let measure5 = response.drinks[0].strMeasure5;
+            let measure6 = response.drinks[0].strMeasure6;
+            let measure7 = response.drinks[0].strMeasure7;
+            let measure8 = response.drinks[0].strMeasure8;
+            let measure9 = response.drinks[0].strMeasure9;
+            let measure10 = response.drinks[0].strMeasure10;
+            let measure11 = response.drinks[0].strMeasure11;
+            let measure12 = response.drinks[0].strMeasure12;
+            let measure13 = response.drinks[0].strMeasure13;
+            let measure14 = response.drinks[0].strMeasure14;
+            let measure15 = response.drinks[0].strMeasure15;
+            let measureObj = [measure1, measure2, measure3, measure4, measure5, measure6, measure7, measure8, measure9, measure10, measure11, measure12, measure13, measure14, measure15];
+            let instructions = response.drinks[0].strInstructions;
+            featuredCocktail.text("Featured Cocktail")
+            cocktailNameEl.text(cocktailName);
+            ingredientTitle.text("Ingredients");
+            //ingredients and measure goes here
+            displayIngredients = function () {
+                for (i = 0; i < ingredientObj.length; i++) {
+                    if (ingredientObj[i] && measureObj[i] != null) {
+                        let ingredientsEl = $("<li>");
+                        ingredientsEl.text(ingredientObj[i]+" : "+measureObj[i]);
+                        ingredientList.append(ingredientsEl);
+                    }
+                }
+            };
+            instructionsTitle.text("Instructions");
+            instructionsEl.text(instructions);
+            $("#cocktail-recipe").append(featuredCocktail);
+            $("#cocktail-recipe").append(cocktailImg);
+            $("#cocktail-recipe").append(cocktailNameEl);
+            $("#cocktail-recipe").append(ingredientTitle);
+            $("#cocktail-recipe").append(ingredientList)
+            displayIngredients();
+            $("#cocktail-recipe").append(instructionsTitle);
+            $("#cocktail-recipe").append(instructionsEl);
+        });
+}
 
+featuredCocktail();
 
 let displayCocktail = function (cocktail) {
     let apiUrlCocktail = "https://thecocktaildb.com/api/json/v1/1/search.php?s=" + cocktail;
