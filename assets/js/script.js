@@ -6,31 +6,31 @@ $("#search").click(function () {
     if (cocktail) {
         displayCocktail(cocktail)
     };
-    if (cocktail = "gimlet") {
+    if (cocktail === "gimlet") {
         displayMusic(blues)
     }
-    else if (cocktail = "moscow mule") {
+    else if (cocktail === "moscow mule") {
         displayMusic(jazz)
     }
-    else if (cocktail = "a midsummernight dream") {
+    else if (cocktail === "a midsummernight dream") {
         displayMusic(rock)
     }
-    else if (cocktail = "margarita") {
+    else if (cocktail === "margarita") {
         displayMusic(latin)
     }
-    else if (cocktail = "french 75") {
+    else if (cocktail === "french 75") {
         displayMusic(hiphop)
     }
-    else if (cocktail = "whiskey sour") {
+    else if (cocktail === "whiskey sour") {
         displayMusic(metal)
     }
-    else if (cocktail = "manhattan") {
+    else if (cocktail === "manhattan") {
         displayMusic(dance)
     }
-    else if (cocktail = "martini") {
+    else if (cocktail === "martini") {
         displayMusic(funk)
     }
-    else if (cocktail = "old fashioned") {
+    else if (cocktail === "old fashioned") {
         displayMusic(indie)
     }
     else { displayMusic(classical) }
@@ -230,15 +230,25 @@ let displayMusic = function (music) {
                     displayAlbumDetails = function () {
                         $("#album-detail").empty();
                         for (i = 0; i < 3; i++) {
+                            let singlediv=$("<div>");
                             let albumCover = $("<img>");
                             let artistEl = $("<h4>");
                             let albumTitle = $("<h4>");
+                            let favoriteCheckbox=$("<input>");
+                            favoriteCheckbox.prop({
+                                id: 'favoriteMusic',
+                                value: 'favorite',
+                                class: 'favorite-music',
+                                type: 'checkbox'
+                            })
                             albumCover.attr("src", albumArt[i]);
                             artistEl.text(artist[i]);
                             albumTitle.text(trackTitle[i]);
-                            $("#album-detail").append(albumCover);
-                            $("#album-detail").append(artistEl);
-                            $("#album-detail").append(albumTitle);
+                            singlediv.append(albumCover);
+                            singlediv.append(artistEl);
+                            singlediv.append(albumTitle);
+                            singlediv.append(favoriteCheckbox);
+                            $("#album-detail").append(singlediv);
                         }
                     };
                     displayAlbumDetails();
