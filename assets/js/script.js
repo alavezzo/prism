@@ -6,8 +6,36 @@ $("#search").click(function () {
     if (cocktail) {
         displayCocktail(cocktail)
     };
+    if (cocktail = "gimlet") {
+        displayMusic(blues)
+    }
+    else if (cocktail = "moscow mule") {
+        displayMusic(jazz)
+    }
+    else if (cocktail = "a midsummernight dream") {
+        displayMusic(rock)
+    }
+    else if (cocktail = "margarita") {
+        displayMusic(latin)
+    }
+    else if (cocktail = "french 75") {
+        displayMusic(hiphop)
+    }
+    else if (cocktail = "whiskey sour") {
+        displayMusic(metal)
+    }
+    else if (cocktail = "manhattan") {
+        displayMusic(dance)
+    }
+    else if (cocktail = "martini") {
+        displayMusic(funk)
+    }
+    else if (cocktail = "old fashioned") {
+        displayMusic(indie)
+    }
+    else { displayMusic(classical) }
 });
-let featuredCocktail=function(){
+let featuredCocktail = function () {
     let apiUrlCocktail = "https://thecocktaildb.com/api/json/v1/1/random.php";
     fetch(apiUrlCocktail)
         .then(function (response) {
@@ -15,7 +43,7 @@ let featuredCocktail=function(){
         })
         .then(function (response) {
             console.log(response.drinks[0])
-            let featuredCocktail=$("<h2>");
+            let featuredCocktail = $("<h2>");
             let cocktailNameEl = $("<h3>");
             let ingredientTitle = $("<h4>");
             let ingredientList = $("<ul>");
@@ -65,7 +93,7 @@ let featuredCocktail=function(){
                 for (i = 0; i < ingredientObj.length; i++) {
                     if (ingredientObj[i] && measureObj[i] != null) {
                         let ingredientsEl = $("<li>");
-                        ingredientsEl.text(ingredientObj[i]+" : "+measureObj[i]);
+                        ingredientsEl.text(ingredientObj[i] + " : " + measureObj[i]);
                         ingredientList.append(ingredientsEl);
                     }
                 }
@@ -142,7 +170,7 @@ let displayCocktail = function (cocktail) {
                 for (i = 0; i < ingredientObj.length; i++) {
                     if (ingredientObj[i] && measureObj[i] != null) {
                         let ingredientsEl = $("<li>");
-                        ingredientsEl.text(ingredientObj[i]+" : "+measureObj[i]);
+                        ingredientsEl.text(ingredientObj[i] + " : " + measureObj[i]);
                         ingredientList.append(ingredientsEl);
                     }
                 }
@@ -160,8 +188,6 @@ let displayCocktail = function (cocktail) {
         });
 };
 
-
-
 let blues = '8055125582';
 let jazz = '151692581';
 let rock = '8180281502';
@@ -173,31 +199,91 @@ let funk = '3798795702';
 let indie = '8124658462';
 let classical = '1673880511';
 
-let randomNumber = function (min, max) {
-    let value = Math.floor((Math.random() * (max - min + 1)) + min);
+let displayMusic = function (music) {
+    let randomNumber = function (min, max) {
+        let value = Math.floor((Math.random() * (max - min + 1)) + min);
 
-    return value;
-}
-
-fetch(`https://deezerdevs-deezer.p.rapidapi.com/playlist/${classical}`, {
-    "method": "GET",
-    "headers": {
-        "x-rapidapi-key": "8d232ef877msh1787bcdf76ee4c3p1a747cjsn856f383ec767",
-        "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com"
+        return value;
     }
-})
-    .then(function (response) {
-        if (response.ok) {
-            response.json().then(function (response) {
-                let length = response.tracks.data.length
-                let randomTrack = response.tracks.data[randomNumber(0, (length - 1))]
-                let trackTitle = randomTrack.title
-                let artist = randomTrack.artist.name
-                let albumArt = randomTrack.album.cover
-                console.log(trackTitle)
-                console.log(artist)
-                console.log(albumArt)
-            })
-        }
-    });
 
+    fetch("https://deezerdevs-deezer.p.rapidapi.com/playlist/" + music, {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-key": "8d232ef877msh1787bcdf76ee4c3p1a747cjsn856f383ec767",
+            "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com"
+        }
+    })
+        .then(function (response) {
+            if (response.ok) {
+                response.json().then(function (response) {
+                    let length = response.tracks.data.length
+                    let randomTrack = [response.tracks.data[randomNumber(0, (length - 1))],response.tracks.data[randomNumber(0, (length - 1))],response.tracks.data[randomNumber(0, (length - 1))]]
+                    let trackTitle = [randomTrack[0].album.title,randomTrack[1].album.title,randomTrack[2].album.title];
+                    let artist = [randomTrack[0].artist.name,randomTrack[1].artist.name,randomTrack[2].artist.name]
+                    let albumArt = [randomTrack[0].album.cover,randomTrack[1].album.cover,randomTrack[2].album.cover]
+                    console.log(trackTitle)
+                    console.log(artist)
+                    console.log(albumArt)
+                    console.log(randomTrack)
+
+
+                    displayAlbumDetails = function () {
+                        $("#album-detail").empty();
+                        for (i = 0; i < 3; i++) {
+                            let albumCover = $("<img>");
+                            let artistEl = $("<h4>");
+                            let albumTitle = $("<h4>");
+                            albumCover.attr("src", albumArt[i]);
+                            artistEl.text(artist[i]);
+                            albumTitle.text(trackTitle[i]);
+                            $("#album-detail").append(albumCover);
+                            $("#album-detail").append(artistEl);
+                            $("#album-detail").append(albumTitle);
+                        }
+                    };
+                    displayAlbumDetails();
+
+                })
+            }
+        });
+};
+
+
+// let blues = '8055125582';
+// let jazz = '151692581';
+// let rock = '8180281502';
+// let latin = '178699142';
+// let hipHop = '1677006641';
+// let metal = '2655390504';
+// let dance = '1291471565';
+// let funk = '3798795702';
+// let indie = '8124658462';
+// let classical = '1673880511';
+
+// let randomNumber = function (min, max) {
+//     let value = Math.floor((Math.random() * (max - min + 1)) + min);
+
+//     return value;
+// }
+
+// fetch(`https://deezerdevs-deezer.p.rapidapi.com/playlist/${classical}`, {
+//     "method": "GET",
+//     "headers": {
+//         "x-rapidapi-key": "8d232ef877msh1787bcdf76ee4c3p1a747cjsn856f383ec767",
+//         "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com"
+//     }
+// })
+//     .then(function (response) {
+//         if (response.ok) {
+//             response.json().then(function (response) {
+//                 let length = response.tracks.data.length
+//                 let randomTrack = response.tracks.data[randomNumber(0, (length - 1))]
+//                 let trackTitle = randomTrack.title
+//                 let artist = randomTrack.artist.name
+//                 let albumArt = randomTrack.album.cover
+//                 console.log(trackTitle)
+//                 console.log(artist)
+//                 console.log(albumArt)
+//             })
+//         }
+//     });
