@@ -7,6 +7,7 @@ $("#search").click(function () {
         displayCocktail(cocktail)
     };
 });
+
 let featuredCocktail=function(){
     let apiUrlCocktail = "https://thecocktaildb.com/api/json/v1/1/random.php";
     fetch(apiUrlCocktail)
@@ -189,14 +190,22 @@ fetch(`https://deezerdevs-deezer.p.rapidapi.com/playlist/${classical}`, {
     .then(function (response) {
         if (response.ok) {
             response.json().then(function (response) {
-                let length = response.tracks.data.length
-                let randomTrack = response.tracks.data[randomNumber(0, (length - 1))]
-                let trackTitle = randomTrack.title
-                let artist = randomTrack.artist.name
-                let albumArt = randomTrack.album.cover
-                console.log(trackTitle)
-                console.log(artist)
-                console.log(albumArt)
+                for (i=0; i<5; i++) {
+                    let musicEl = $('#suggested-music')
+                    let length = response.tracks.data.length
+                    let randomTrack = response.tracks.data[randomNumber(0, (length - 1))]
+                    let trackTitle = randomTrack.title
+                    let artist = randomTrack.artist.name
+                    let albumArt = randomTrack.album.cover
+                    let listEl = $('<ol>').addClass('list-group-item')
+                    let albumArtEl = $('<img>').attr('src', albumArt)
+                    let divEl =$('<div>')
+                    let trackTitleEl = $('<h5>').text(trackTitle)
+                    let artistNameEl = $('<p>').text(artist)
+                    divEl.append(trackTitleEl).append(artistNameEl)
+                    listEl.append(albumArtEl).append(divEl)
+                    musicEl.append(listEl)
+                }
             })
         }
     });
