@@ -1,10 +1,42 @@
 let cocktail = "";
+let blues = '8055125582';
+let jazz = '151692581';
+let rock = '8180281502';
+let latin = '178699142';
+let hipHop = '1677006641';
+let metal = '2655390504';
+let dance = '1291471565';
+let funk = '3798795702';
+let indie = '8124658462';
+let classical = '1673880511';
+let pop = '2098157264'
 
 $("#search").click(function () {
     event.preventDefault();
     let cocktail = $("#cocktail").val();
     if (cocktail) {
         displayCocktail(cocktail)
+    };
+    if (cocktail==='old fashioned') {
+        getMusic(blues, 'Old Fashioned')
+    } else if (cocktail==='margarita') {
+        getMusic(latin, 'Margarita')
+    } else if (cocktail === 'gimlet'){
+        getMusic(indie, 'Gimlet')
+    }  else if (cocktail === 'french 75') {
+        getMusic(dance, 'French 75')
+    } else if (cocktail === 'martini') {
+        getMusic(jazz, 'Martini')
+    } else if (cocktail === 'cosmopolitan') {
+        getMusic(rock, 'Cosmopolitan') 
+    } else if (cocktail === 'manhattan' ){
+        getMusic(classical, 'Manhattan')
+    } else if (cocktail === 'whiskey sour') {
+        getMusic(metal, 'Whiskey Sour')
+    } else if (cocktail === 'moscow mule') {
+        getMusic(hipHop, 'Moscow Mule')
+    } else if (cocktail==='a midsummernight dream') {
+        getMusic(funk, 'A Midsummernight Dream')
     };
 });
 
@@ -23,6 +55,7 @@ let featuredCocktail=function(){
             let instructionsTitle = $("<h4>");
             let instructionsEl = $("<p>");
             let cocktailName = response.drinks[0].strDrink;
+            getMusic(pop, cocktailName)
             let cocktailImg = $("<img>");
             cocktailImg.attr("src", response.drinks[0].strDrinkThumb + "/preview")
             let ingredient1 = response.drinks[0].strIngredient1;
@@ -162,25 +195,14 @@ let displayCocktail = function (cocktail) {
 };
 
 
-
-let blues = '8055125582';
-let jazz = '151692581';
-let rock = '8180281502';
-let latin = '178699142';
-let hipHop = '1677006641';
-let metal = '2655390504';
-let dance = '1291471565';
-let funk = '3798795702';
-let indie = '8124658462';
-let classical = '1673880511';
-
 let randomNumber = function (min, max) {
     let value = Math.floor((Math.random() * (max - min + 1)) + min);
 
     return value;
 }
 
-fetch(`https://deezerdevs-deezer.p.rapidapi.com/playlist/${classical}`, {
+let getMusic = function (music, cocktail) {
+    fetch(`https://deezerdevs-deezer.p.rapidapi.com/playlist/${music}`, {
     "method": "GET",
     "headers": {
         "x-rapidapi-key": "8d232ef877msh1787bcdf76ee4c3p1a747cjsn856f383ec767",
@@ -190,8 +212,12 @@ fetch(`https://deezerdevs-deezer.p.rapidapi.com/playlist/${classical}`, {
     .then(function (response) {
         if (response.ok) {
             response.json().then(function (response) {
+                let musicEl = $('#suggested-music')
+                musicEl.empty()
+                console.log(cocktail)
+                let headerEl = $('<h3>').text(cocktail + ' Music')
+                musicEl.append(headerEl)
                 for (i=0; i<5; i++) {
-                    let musicEl = $('#suggested-music')
                     let length = response.tracks.data.length
                     let randomTrack = response.tracks.data[randomNumber(0, (length - 1))]
                     let trackTitle = randomTrack.title
@@ -209,4 +235,4 @@ fetch(`https://deezerdevs-deezer.p.rapidapi.com/playlist/${classical}`, {
             })
         }
     });
-
+}
