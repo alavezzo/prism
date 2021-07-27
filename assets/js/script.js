@@ -212,36 +212,74 @@ let getMusic = function (music, cocktail) {
     .then(function (response) {
         if (response.ok) {
             response.json().then(function (response) {
+                list = []
+            // for (i=0; i<5; i++) {
+            //     let id = '#' + i 
+            //     let song = $(id).text()
+            //     list.push(song)
+            // }
+            // for (i=0; i<5; i++){
+            //     if list[i]
+            // }
                 let musicEl = $('#suggested-music')
                 musicEl.empty()
                 console.log(cocktail)
                 let headerEl = $('<h3>').text(cocktail + ' Music')
                 let listDivEl = $('<ul>').addClass('list-group')
                 musicEl.append(headerEl).append(listDivEl)
-                for (i=0; i<5; i++) {
-                    let favoriteCheckbox=$("<input>");
-                            favoriteCheckbox.prop({
-                                id: 'favoriteMusic',
-                                value: 'favorite',
-                                class: 'favorite-music cell-2',
-                                type: 'checkbox'
-                            })  
-                    let length = response.tracks.data.length
-                    let randomTrack = response.tracks.data[randomNumber(0, (length - 1))]
-                    let trackTitle = randomTrack.title
-                    let artist = randomTrack.artist.name
-                    let albumArt = randomTrack.album.cover
-                    let listEl = $('<ol>').addClass('list-group-item grid-x grid-margin-x')
-                    let albumArtEl = $('<img>').attr('src', albumArt).addClass('cell large-3')
-                    let divEl =$('<div>').addClass('cell large-6')
-                    let trackTitleEl = $('<h5>').text(trackTitle)
-                    let artistNameEl = $('<p>').text(artist)
-                    divEl.append(trackTitleEl).append(artistNameEl)
-                    listEl.append(albumArtEl).append(divEl).append(favoriteCheckbox)
-                    listDivEl.append(listEl)
+                while (list.length<5) {
+                        let favoriteCheckbox=$("<input>");
+                                favoriteCheckbox.prop({
+                                    id: 'favoriteMusic',
+                                    value: 'favorite',
+                                    class: 'favorite-music cell-2',
+                                    type: 'checkbox'
+                                }) 
+                        let length = response.tracks.data.length
+                        let randomTrack = response.tracks.data[randomNumber(0, (length - 1))]
+                        let trackTitle = randomTrack.title
+                        // prevent duplicates
+                        let duplicate = ''
+                        if (list.length===0) {
+                            list.push(trackTitle)
+                            let artist = randomTrack.artist.name
+                            let albumArt = randomTrack.album.cover
+                            let listEl = $('<ol>').addClass('list-group-item grid-x grid-margin-x')
+                            let albumArtEl = $('<img>').attr('src', albumArt).addClass('cell large-3')
+                            let divEl =$('<div>').addClass('cell large-6')
+                            let trackTitleEl = $('<h5>').text(trackTitle)
+                            let artistNameEl = $('<p>').text(artist)
+                            divEl.append(trackTitleEl).append(artistNameEl)
+                            listEl.append(albumArtEl).append(divEl).append(favoriteCheckbox)
+                            listDivEl.append(listEl)  
+                        }  
+                        else {
+                            for (i=0; i>list.length;i++) {
+                                if (trackTitleEl === list[i]) {
+                                    duplicate = true
+                                }
+                            }
+                            if (!duplicate) {
+                                list.push(trackTitle)
+                                let artist = randomTrack.artist.name
+                                let albumArt = randomTrack.album.cover
+                                let listEl = $('<ol>').addClass('list-group-item grid-x grid-margin-x')
+                                let albumArtEl = $('<img>').attr('src', albumArt).addClass('cell large-3')
+                                let divEl =$('<div>').addClass('cell large-6')
+                                let trackTitleEl = $('<h5>').text(trackTitle)
+                                let artistNameEl = $('<p>').text(artist)
+                                divEl.append(trackTitleEl).append(artistNameEl)
+                                listEl.append(albumArtEl).append(divEl).append(favoriteCheckbox)
+                                listDivEl.append(listEl) 
+                            }
+                        }
                 }
             })
         }
     });
+}
+
+let preventDuplicates = function () {
+    
 }
 
