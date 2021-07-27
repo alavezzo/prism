@@ -38,6 +38,7 @@ $("#search").click(function () {
     } else if (cocktail==='a midsummernight dream') {
         getMusic(funk, 'A Midsummernight Dream')
     };
+    
 });
 
 let featuredCocktail=function(){
@@ -131,7 +132,7 @@ let displayCocktail = function (cocktail) {
             let cocktailNameEl = $("<h3>");
             let ingredientTitle = $("<h4>");
             let ingredientList = $("<ul>");
-            let instructionsTitle = $("<h4>");
+            let instructionsTitle = $("<h4");
             let instructionsEl = $("<p>");
             let cocktailName = response.drinks[0].strDrink;
             let cocktailImg = $("<img>");
@@ -226,6 +227,7 @@ let getMusic = function (music, cocktail) {
                 console.log(cocktail)
                 let headerEl = $('<h3>').text(cocktail + ' Music')
                 let listDivEl = $('<ul>').addClass('list-group')
+                let favoriteBtn=$('<button>').attr("type","button").attr("id","favBtn").addClass("button right").text("Save!");
                 musicEl.append(headerEl).append(listDivEl)
                 while (list.length<5) {
                         let favoriteCheckbox=$("<input>");
@@ -274,6 +276,7 @@ let getMusic = function (music, cocktail) {
                             }
                         }
                 }
+                musicEl.append(favoriteBtn)
             })
         }
     });
