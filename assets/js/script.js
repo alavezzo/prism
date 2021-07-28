@@ -268,14 +268,26 @@ let savedSongs = []
 $(document).on('click', '.fav-icon', function() {
     $(this).toggleClass('far fas');
     let id = $(this).attr('id')
-    console.log(id)
+    let push = true
     if ($(this).attr('class') === 'fav-icon fa-heart fas'){
         let songInfo = {
             song: $('#'+id).attr('song'),
             artist: $('#'+id).attr('artist'),
             albumArt: $('#'+id).attr('albumArt')
         }
-        savedSongs.push(songInfo)
+        if (savedSongs.length === 0) {
+            savedSongs.push(songInfo);
+        } else {
+            // check if city has already been searched
+            for (i = 0; i < savedSongs.length; i++) {
+                if (songInfo.song === savedSongs[i].song) {
+                    push = false
+                }
+            } 
+                if (push) {
+                    savedSongs.push(songInfo);
+                }  
+        }
         console.log(savedSongs)
     }
 })
