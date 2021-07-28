@@ -223,13 +223,13 @@ let getMusic = function (music, cocktail) {
                         let length = response.tracks.data.length
                         let randomTrack = response.tracks.data[randomNumber(0, (length - 1))]
                         let trackTitle = randomTrack.title
-                        let favIconEl = $('<i>').addClass('far fa-heart').attr('id', 'fav-icon')
+                        let artist = randomTrack.artist.name;
+                        let albumArt = randomTrack.album.cover;
+                        let favIconEl = $('<i>').addClass('fav-icon far fa-heart').attr('id', list.length).attr('song', trackTitle).attr('artist', artist).attr('albumArt', albumArt)
                         // prevent duplicates
                         let duplicate = '';
                         if (list.length===0) {
                             list.push(trackTitle);
-                            let artist = randomTrack.artist.name;
-                            let albumArt = randomTrack.album.cover;
                             let listEl = $('<ol>').addClass('list-group-item grid-x grid-margin-x');
                             let albumArtEl = $('<img>').attr('src', albumArt).addClass('cell large-3');
                             let divEl =$('<div>').addClass('cell large-6');
@@ -247,8 +247,6 @@ let getMusic = function (music, cocktail) {
                             }
                             if (!duplicate) {
                                 list.push(trackTitle)
-                                let artist = randomTrack.artist.name
-                                let albumArt = randomTrack.album.cover
                                 let listEl = $('<ol>').addClass('list-group-item grid-x grid-margin-x')
                                 let albumArtEl = $('<img>').attr('src', albumArt).addClass('cell large-3')
                                 let divEl =$('<div>').addClass('cell large-6')
@@ -265,6 +263,31 @@ let getMusic = function (music, cocktail) {
     });
 }
 
-$(document).on('click', '#fav-icon', function() {
-    $(this).toggleClass('far fas');;
+let savedSongs = []
+
+$(document).on('click', '.fav-icon', function() {
+    $(this).toggleClass('far fas');
+    let id = $(this).attr('id')
+    let push = true
+    if ($(this).attr('class') === 'fav-icon fa-heart fas'){
+        let songInfo = {
+            song: $('#'+id).attr('song'),
+            artist: $('#'+id).attr('artist'),
+            albumArt: $('#'+id).attr('albumArt')
+        }
+        if (savedSongs.length === 0) {
+            savedSongs.push(songInfo);
+        } else {
+            // check if city has already been searched
+            for (i = 0; i < savedSongs.length; i++) {
+                if (songInfo.song === savedSongs[i].song) {
+                    push = false
+                }
+            } 
+                if (push) {
+                    savedSongs.push(songInfo);
+                }  
+        }
+        console.log(savedSongs)
+    }
 })
