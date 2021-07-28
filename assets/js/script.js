@@ -11,6 +11,7 @@ let indie = '8124658462';
 let classical = '1673880511';
 let pop = '2098157264'
 
+
 $("#search").click(function () {
     event.preventDefault();
     let cocktail = $("#cocktail").val();
@@ -269,6 +270,7 @@ $(document).on('click', '.fav-icon', function() {
     $(this).toggleClass('far fas');
     let id = $(this).attr('id')
     let push = true
+    // add song to list
     if ($(this).attr('class') === 'fav-icon fa-heart fas'){
         let songInfo = {
             song: $('#'+id).attr('song'),
@@ -287,7 +289,52 @@ $(document).on('click', '.fav-icon', function() {
                 if (push) {
                     savedSongs.push(songInfo);
                 }  
-        }
-        console.log(savedSongs)
+    }}
+    //remove song from list 
+    else if ($(this).attr('class') === 'fav-icon fa-heart far') {
+        let songInfo = {
+            song: $('#'+id).attr('song'),
+            artist: $('#'+id).attr('artist'),
+            albumArt: $('#'+id).attr('albumArt')
+        } 
+        for (i = 0; i < savedSongs.length; i++) {
+            if (songInfo.song === savedSongs[i].song) {
+                console.log('yes')
+                savedSongs.splice(i, 1)
+            }
     }
+}
+
+        console.log(savedSongs)
+        localStorage.setItem("songInfo",JSON.stringify(savedSongs));
+        showFavSong();
 })
+
+let loadFavorites = function () {
+    if (JSON.parse(localStorage.getItem('songInfo')) !== null) {
+        savedSongs = JSON.parse(localStorage.getItem('songInfo'))
+        showFavSong();
+    }
+    
+}
+
+
+let showFavSong = function(){
+    $("#fav-list").empty();
+    for (i=0;i<savedSongs.length;i++){
+    let listEl = $('<li>').addClass('list-group-item grid-x grid-margin-x');
+    let albumArtEl = $('<img>').attr('src', savedSongs[i].albumArt).addClass('cell large-3');
+    let divEl =$('<div>').addClass('cell large-6');
+    let trackTitleEl = $('<h5>').text(savedSongs[i].song);
+    let artistNameEl = $('<p>').text(savedSongs[i].artist);
+    divEl.append(trackTitleEl).append(artistNameEl);
+    listEl.append(albumArtEl).append(divEl);
+    $("#fav-list").append(listEl);
+}
+};
+
+
+loadFavorites();
+
+// hello how are you?
+//
