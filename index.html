@@ -1,72 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-    <link rel="stylesheet" href="./assets/css/style.css" />
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
+    integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
+
 <body>
-    <header>
-        <div class="top-bar">
-            <a class="bar-brand" href="/">
-                <img href="/" src="https://image.flaticon.com/icons/png/512/38/38706.png" width="50" height="50" class="d-inline-block align-top"
-                    alt="">
-            </a>
-            <div class="top-bar-right">
-              <ul class="menu" id="cocktail-select">
-                <li><select name="cocktail" id="cocktail">
-                    <option value="" selected>Select Your Cocktail</option>
-                    <option value="gimlet">Gimlet</option>
-                    <option value="moscow mule">Moscow Mule</option>
-                    <option value="a midsummernight dream">A Midsummernight Dream</option>
-                    <option value="margarita">Margarita</option>
-                    <option value="french 75">French 75</option>
-                    <option value="whiskey sour">Whiskey Sour</option>
-                    <option value="manhattan">Manhattan</option>
-                    <option value="martini">Martini</option>
-                    <option value="old fashioned">Old Fashioned</option>
-                    <option value="cosmopolitan">Cosmopolitan</option>
-                  </select></li>
-                <li><button type="button" class="button" id="search">Search</button></li>
-              </ul>
-            </div>
-          </div>
-    </header>
-   
-    <main>
-      <div class="card-holder grid-x">
-          <div class="cell small-5">
-            <div class="card">
-              <div class="card-section" id="cocktail-recipe">
-              </div>
-            </div>
-          </div>       
-          <div class="cell small-5">
-            <div class="card">
-              <div class="card-section" id = "suggested-music">
-              </div>
-            </div>
+  <header>
+    <div class="top-bar">
+      <a class="bar-brand" href="/">
+        <img href="/" src="https://image.flaticon.com/icons/png/512/38/38706.png" width="50" height="50"
+          class="d-inline-block align-top" alt="">
+      </a>
+      <div class="top-bar-right">
+        <ul class="menu" id="cocktail-select">
+          <li><select name="cocktail" id="cocktail">
+              <option value="" selected>Select Your Cocktail</option>
+              <option value="gimlet">Gimlet</option>
+              <option value="moscow mule">Moscow Mule</option>
+              <option value="a midsummernight dream">A Midsummernight Dream</option>
+              <option value="margarita">Margarita</option>
+              <option value="french 75">French 75</option>
+              <option value="whiskey sour">Whiskey Sour</option>
+              <option value="manhattan">Manhattan</option>
+              <option value="martini">Martini</option>
+              <option value="old fashioned">Old Fashioned</option>
+              <option value="cosmopolitan">Cosmopolitan</option>
+            </select></li>
+          <li><button type="button" class="button" id="search">Search</button></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="card-holder grid-x">
+      <div class="cell small-5">
+        <div class="card">
+          <div class="card-section" id="cocktail-recipe">
           </div>
         </div>
       </div>
-      <div>
+      <div class="cell small-5">
+        <div class="card">
+          <div class="card-section" id="suggested-music">
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="card-holder grid-x">
+      <div class="cell small-11">
+      <div class="card">
         <h3>Favorite Music</h3>
         <ul class='list-group' id="fav-list">
         </ul>
       </div>
-    </main>
-    <footer>
-      <h2>❤️ Made with love by Prism.</h2>
-      <div>
-          &copy; Prism, Inc.
-      </div>
+    </div>
+    </div>
+
+    </div>
+  </main>
+  <footer>
+    <h2>❤️ Made with love by Prism.</h2>
+    <div>
+      &copy; Prism, Inc.
+    </div>
   </footer>
-   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="./assets/js/script.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
