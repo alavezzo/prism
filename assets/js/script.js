@@ -216,7 +216,6 @@ let getMusic = function (music, cocktail) {
                 let list = []
                 let musicEl = $('#suggested-music')
                 musicEl.empty()
-                console.log(cocktail)
                 let headerEl = $('<h3>').text(cocktail + ' Music')
                 let listDivEl = $('<ul>').addClass('list-group')
                 musicEl.append(headerEl).append(listDivEl)
@@ -266,7 +265,7 @@ let getMusic = function (music, cocktail) {
 
 let savedSongs = []
 
-$(document).on('click', '.fav-icon', function() {
+$('#suggested-music').on('click', '.fav-icon', function() {
     $(this).toggleClass('far fas');
     let id = $(this).attr('id')
     let push = true
@@ -304,8 +303,6 @@ $(document).on('click', '.fav-icon', function() {
             }
     }
 }
-
-        console.log(savedSongs)
         localStorage.setItem("songInfo",JSON.stringify(savedSongs));
         showFavSong();
 })
@@ -327,14 +324,28 @@ let showFavSong = function(){
     let divEl =$('<div>').addClass('cell large-6');
     let trackTitleEl = $('<h5>').text(savedSongs[i].song);
     let artistNameEl = $('<p>').text(savedSongs[i].artist);
+    let favIconEl = $('<i>').addClass('fav-icon fas fa-heart ' + i).attr('song', savedSongs[i].song).attr('count', i)
     divEl.append(trackTitleEl).append(artistNameEl);
-    listEl.append(albumArtEl).append(divEl);
+    listEl.append(albumArtEl).append(divEl).append(favIconEl);
     $("#fav-list").append(listEl);
 }
 };
 
+$('#fav-songs').on('click', '.fav-icon', function() {
+    let id = $(this).attr('count')
+    console.log(id)
+    console.log(savedSongs)
+    let song = $('.' + id).attr('song');
+    console.log(song)
+    for (i = 0; i < savedSongs.length; i++) {
+        if (song === savedSongs[i].song) {
+            savedSongs.splice(i, 1)
+            console.log(savedSongs)
+        }
+}
+    localStorage.setItem("songInfo",JSON.stringify(savedSongs));
+    showFavSong();
+})
 
 loadFavorites();
 
-// hello how are you?
-//
