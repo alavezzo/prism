@@ -1,3 +1,10 @@
+img {
+  max-width: min-content;
+}
+
+.menu {
+  justify-content: center;
+}
 .hero-search-filter {
   background: url(../images/hero-background.jpg) center center no-repeat;
   height: 400px;
