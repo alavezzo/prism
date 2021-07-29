@@ -243,7 +243,7 @@ let getMusic = function (music, cocktail) {
                         else {
                             for (i=0; i<list.length;i++) {
                                 if (trackTitle === list[i]) {
-                                    duplicate = true
+                                    duplicate = true;
                                 }
                             }
                             if (!duplicate) {
