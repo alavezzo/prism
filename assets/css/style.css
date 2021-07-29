@@ -64,8 +64,15 @@ img {
   justify-content: center;
 }
 
+.suggestions {
+  margin: 10vh 0;
+}
+
+.favorites {
+  margin-bottom: 10vh;
+}
+
 .card-holder {
-    margin-top: 100px;
     justify-content: space-around;
 };
 
@@ -117,15 +124,40 @@ img {
     width: 33%;
   }
 
-  .card {
+.card {
   border: solid 3px var(--secondary-color);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
 }
+
+footer {
+  background: url(../images/hero-background.jpg);
+  background-size: cover;
+  background-position: 80%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: space-between;
+          justify-content: space-between;
+  -webkit-align-items: space-between;
+      -ms-flex-align: space-between;
+          align-items: space-between;
+}
+
+footer h2 {
+  padding: .75vh 1vw;
+}
+
+#copyright {
+  padding: .75vh 1vw;
+}
+
 
 @media screen and (max-width: 39.9375em) {
   .hero-search-filter-form {
     width: 95%;
   }
 }
+
 
