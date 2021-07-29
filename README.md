@@ -16,7 +16,7 @@ This website allows indecisive users to select music based on the cocktail they 
 When the user chooses the cocktail and click the search button, the cocktail detail and the music that gets along with the cocktail will display. Once the user clicks the heart icon next to the music information, the music information is saved and is listed under the favorite music section for future reference.
 
 ## Screenshot
-![screenshot of the page](./assets/images/ "Screenshot")
+![screenshot of the page](./assets/images/page-capture.png?raw=true "Screenshot")
 
 ## Website
 https://daphne1014.github.io/project1-prism/
