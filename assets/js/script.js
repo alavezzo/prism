@@ -52,7 +52,7 @@ let featuredCocktail=function(){
             let featuredCocktail=$("<h2>");
             let cocktailNameEl = $("<h3>");
             let ingredientTitle = $("<h4>");
-            let ingredientList = $("<ul>");
+            let ingredientList = $("<ul>").addClass("list-group");
             let instructionsTitle = $("<h4>");
             let instructionsEl = $("<p>");
             let cocktailName = response.drinks[0].strDrink;
@@ -99,7 +99,7 @@ let featuredCocktail=function(){
             displayIngredients = function () {
                 for (i = 0; i < ingredientObj.length; i++) {
                     if (ingredientObj[i] && measureObj[i] != null) {
-                        let ingredientsEl = $("<li>");
+                        let ingredientsEl = $("<li>").addClass("list-group-item");
                         ingredientsEl.text(ingredientObj[i]+" : "+measureObj[i]);
                         ingredientList.append(ingredientsEl);
                     }
@@ -108,8 +108,8 @@ let featuredCocktail=function(){
             instructionsTitle.text("Instructions");
             instructionsEl.text(instructions);
             $("#cocktail-recipe").append(featuredCocktail);
-            $("#cocktail-recipe").append(cocktailImg);
             $("#cocktail-recipe").append(cocktailNameEl);
+            $("#cocktail-recipe").append(cocktailImg);
             $("#cocktail-recipe").append(ingredientTitle);
             $("#cocktail-recipe").append(ingredientList)
             displayIngredients();
@@ -131,7 +131,7 @@ let displayCocktail = function (cocktail) {
             $("#cocktail-recipe").empty();
             let cocktailNameEl = $("<h3>");
             let ingredientTitle = $("<h4>");
-            let ingredientList = $("<ul>");
+            let ingredientList = $("<ul>").addClass('list-group');
             let instructionsTitle = $("<h4>");
             let instructionsEl = $("<p>");
             let cocktailName = response.drinks[0].strDrink;
@@ -176,7 +176,7 @@ let displayCocktail = function (cocktail) {
             displayIngredients = function () {
                 for (i = 0; i < ingredientObj.length; i++) {
                     if (ingredientObj[i] && measureObj[i] != null) {
-                        let ingredientsEl = $("<li>");
+                        let ingredientsEl = $("<li>").addClass('list-group-item');
                         ingredientsEl.text(ingredientObj[i]+" : "+measureObj[i]);
                         ingredientList.append(ingredientsEl);
                     }
@@ -185,8 +185,8 @@ let displayCocktail = function (cocktail) {
 
             instructionsTitle.text("Instructions");
             instructionsEl.text(instructions);
-            $("#cocktail-recipe").append(cocktailImg);
             $("#cocktail-recipe").append(cocktailNameEl);
+            $("#cocktail-recipe").append(cocktailImg);
             $("#cocktail-recipe").append(ingredientTitle);
             $("#cocktail-recipe").append(ingredientList)
             displayIngredients();
