@@ -1,3 +1,10 @@
+img {
+  max-width: min-content;
+}
+
+.menu {
+  justify-content: center;
+}
 .hero-search-filter {
   background: url(../images/hero-background.jpg) center center no-repeat;
   height: 400px;
@@ -38,11 +45,7 @@
   margin-bottom: 0;
 }
 
-@media screen and (max-width: 39.9375em) {
-  .hero-search-filter-form {
-    width: 95%;
-  }
-}
+
 
 .hero-search-filter-form-find,
 .hero-search-filter-form-near {
@@ -127,7 +130,6 @@
     border-radius: 15px;
 }
 
-
 footer {
   background: url(../images/hero-background.jpg);
   background-size: cover;
@@ -152,5 +154,10 @@ footer h2 {
 }
 
 
+@media screen and (max-width: 39.9375em) {
+  .hero-search-filter-form {
+    width: 95%;
+  }
+}
 
 
