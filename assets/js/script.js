@@ -241,9 +241,9 @@ let getMusic = function (music, cocktail) {
                             listDivEl.append(listEl);
                         }
                         else {
-                            for (i=0; i>list.length;i++) {
-                                if (trackTitleEl === list[i]) {
-                                    duplicate = true
+                            for (i=0; i<list.length;i++) {
+                                if (trackTitle === list[i]) {
+                                    duplicate = true 
                                 }
                             }
                             if (!duplicate) {
