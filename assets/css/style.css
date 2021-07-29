@@ -1,8 +1,16 @@
+.top-bar {
+  text-align: center;
+  height: max(calc(100vh - 250px),300px);
+}
+
+#cocktail-select {
+  justify-content: center;
+}
+
 .card-holder {
     margin-top: 100px;
     justify-content: space-around;
 };
-
 
 .list-group {
     margin-bottom: 1rem;
@@ -48,4 +56,6 @@
     background-color: #fefefe;
   }
   
-  
+  #fav-list .list-group-item {
+    width: 33%;
+  }

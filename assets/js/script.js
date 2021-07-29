@@ -243,12 +243,12 @@ let getMusic = function (music, cocktail) {
                         else {
                             for (i=0; i<list.length;i++) {
                                 if (trackTitle === list[i]) {
-                                    duplicate = true 
+                                    duplicate = true;
                                 }
                             }
                             if (!duplicate) {
                                 list.push(trackTitle)
-                                let listEl = $('<ol>').addClass('list-group-item grid-x grid-margin-x')
+                                let listEl = $('<li>').addClass('list-group-item grid-x grid-margin-x')
                                 let albumArtEl = $('<img>').attr('src', albumArt).addClass('cell large-3')
                                 let divEl =$('<div>').addClass('cell large-6')
                                 let trackTitleEl = $('<h5>').text(trackTitle)
@@ -322,14 +322,14 @@ let loadFavorites = function () {
 let showFavSong = function(){
     $("#fav-list").empty();
     for (i=0;i<savedSongs.length;i++){
-    let listEl = $('<li>').addClass('list-group-item grid-x grid-margin-x');
-    let albumArtEl = $('<img>').attr('src', savedSongs[i].albumArt).addClass('cell large-3');
-    let divEl =$('<div>').addClass('cell large-6');
-    let trackTitleEl = $('<h5>').text(savedSongs[i].song);
-    let artistNameEl = $('<p>').text(savedSongs[i].artist);
-    divEl.append(trackTitleEl).append(artistNameEl);
-    listEl.append(albumArtEl).append(divEl);
-    $("#fav-list").append(listEl);
+        let listEl = $('<li>').addClass('list-group-item grid-x grid-margin-x');
+        let albumArtEl = $('<img>').attr('src', savedSongs[i].albumArt).addClass('cell large-3');
+        let divEl =$('<div>').addClass('cell large-6');
+        let trackTitleEl = $('<h5>').text(savedSongs[i].song);
+        let artistNameEl = $('<p>').text(savedSongs[i].artist);
+        divEl.append(trackTitleEl).append(artistNameEl);
+        listEl.append(albumArtEl).append(divEl);
+        $("#fav-list").append(listEl);
 }
 };
 
