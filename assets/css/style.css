@@ -1,9 +1,63 @@
-.top-bar {
-  text-align: center;
-  height: max(calc(100vh - 250px),300px);
+.hero-search-filter {
+  background: url(../images/hero-background.jpg) center center no-repeat;
+  height: 400px;
+  background-size: cover;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.menu {
+.hero-search-filter-logo {
+  margin-bottom: 2rem;
+}
+
+.hero-search-filter-content {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 300px;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+
+
+.hero-search-filter-form input,
+.hero-search-filter-form .button {
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 39.9375em) {
+  .hero-search-filter-form {
+    width: 95%;
+  }
+}
+
+.hero-search-filter-form-find,
+.hero-search-filter-form-near {
+  border: 0;
+  box-shadow: none;
+}
+
+.hero-search-filter-form-find:focus,
+.hero-search-filter-form-near:focus {
+  border: 0;
+  box-shadow: none;
+}
+
+
+#cocktail-select {
   justify-content: center;
 }
 

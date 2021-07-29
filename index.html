@@ -14,13 +14,14 @@
 </head>
 
 <body>
-  <header>
-    <div class="top-bar">
+
+  <header class="hero-search-filter">
+    <div class="hero-search-filter-content">
       <a class="bar-brand" href="/">
-        <img href="/" src="https://image.flaticon.com/icons/png/512/38/38706.png" width="50" height="50"
-          class="d-inline-block align-top" alt="">
+        <img class="hero-search-filter-logo" src="https://image.flaticon.com/icons/png/512/38/38706.png" width="60"
+          height="60" alt="" />
       </a>
-      <div class="top-bar-right">
+      <form class="hero-search-filter-form" action="">
         <ul class="menu" id="cocktail-select">
           <li><select name="cocktail" id="cocktail">
               <option value="" selected>Select Your Cocktail</option>
@@ -35,9 +36,8 @@
               <option value="old fashioned">Old Fashioned</option>
               <option value="cosmopolitan">Cosmopolitan</option>
             </select></li>
-          <li><button type="button" class="button" id="search">Search</button></li>
-        </ul>
-      </div>
+          <button class="button" id="search"><i class="fa fa-search"></i></button>
+      </form>
     </div>
   </header>
 
