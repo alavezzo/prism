@@ -1,7 +1,3 @@
-## project1-prism
-
-
-
 ## Cocktail-Music Recommendation
 
 ## Built With
@@ -19,7 +15,7 @@ When the user chooses the cocktail and click the search button, the cocktail det
 ![screenshot of the page](./assets/images/page-capture.png?raw=true "Screenshot")
 
 ## Website
-https://daphne1014.github.io/project1-prism/
+https://alavezzo.github.io/prism/
 
 ## Contribution
-Made with ❤️ by Anthony Lavezzo, Daphne Song, and Michael Ceballos
+Made with ❤️ by Anthony Lavezzo, and Daphne Song
